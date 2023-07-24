@@ -6,10 +6,14 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Poppins"],
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["cupcake", "aqua", "dark"],
+    themes: ["light", "light", "dark"],
   },
 };
