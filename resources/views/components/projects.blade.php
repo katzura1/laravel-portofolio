@@ -2,7 +2,7 @@
     <div class="flex flex-row justify-between item-start w-full">
         <h2 class="text-2xl font-bold text-primary-content">Latest Project</h2>
     </div>
-    <div class="flex flex-col lg:flex-row gap-4">
+    <div class="flex flex-col lg:flex-row gap-4 md:gap-10 lg:gap-4">
         @for ($i = 0; $i < 3 ; $i++) <a href="{{ url('detail') }}">
             <div
                 class="card w-full lg:w-124 bg-base-100 shadow-xl image-full sm:max-h-24 lg:max-h-none hover:cursor-pointer">
@@ -10,7 +10,7 @@
                     <img class="w-full" src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
                         alt="Shoes" />
                 </figure>
-                <div class="card-body">
+                <div class="card-body rounded-lg">
                     <h2 class="card-title text-md lg:text-lg text-primary-content">Making a design system from scratch
                     </h2>
                     <div class="flex flex-row w-full gap-4 text-primary-content items-start justify-center flex-1">

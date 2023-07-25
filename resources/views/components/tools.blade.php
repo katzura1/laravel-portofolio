@@ -15,7 +15,7 @@
         </div>
         <div class="flex-1 flex flex-col gap-2">
             <span class="text-md text-primary-content mb-2">Database, Tools and Environment:</span>
-            <span>MySQL, or other databases depending on the project's needs</span>
+            <span>MySQL, SQL Server.</span>
             <span>Git for version control</span>
             <span>Postman for API documentation and testing.</span>
         </div>

@@ -4,7 +4,7 @@
         <h3 class="text-2xl text-primary-content">Have any project in mind?</h3>
         <p class="text-sm">I’m available for freelancing</p>
     </div>
-    <div class="flex flex-col lg:flex-row gap-2 items-center jusfity-center">
+    <div class="flex flex-col md:flex-row gap-2 items-center jusfity-center">
         <a href="{{ url('projects') }}" class="btn btn-outline btn-neutral">More Projects</a>
         <a href="mailto:denny.az45@gmail.com" class="btn btn-primary">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
