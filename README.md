@@ -55,10 +55,6 @@ php artisan serve
 
 Access the application in your web browser at `http://localhost:8000`.
 
-## Project Screenshots
-
-- Add some screenshots or GIFs of your application here.
-
 ## Contributing
 
 Contributions to this project are welcome. Feel free to open a Pull Request explaining the proposed changes.
