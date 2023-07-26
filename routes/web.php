@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,19 @@ Route::get('/detail', function () {
 
 Route::get('/projects', function () {
     return view('project-list');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('login', [AuthController::class, 'index'])->name('admin.auth.index');
+    Route::get('logout', [AuthController::class, 'logout'])->name('admin.auth.logout');
+    Route::get('captcha', [AuthController::class, 'generateCaptcha'])->name('admin.auth.captcha');
+
+    Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');
+
+    Route::group(['middleware' => 'auth:web'], function () {
+        Route::get('/', function () {
+            return view('dashboard');
+        })->name('admin.dashboard');
+    });
 });
