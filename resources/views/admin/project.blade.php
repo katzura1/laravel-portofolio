@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="card collapsed-card">
+        <div class="card collapsed-card" id="card_project">
             <div class="card-header">
                 <h3 class="card-title">Form Project</h3>
                 <div class="card-tools">
@@ -60,6 +60,10 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-save"></i> Save Project
                             </button>
+
+                            <button type="button" class="btn btn-danger btn-cancel d-none">
+                                <i class="fa fa-times"></i> Cancel
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -67,7 +71,7 @@
         </div>
     </div>
     <div class="col-12 table-responsive">
-        <table class="table w-100 table-striped">
+        <table class="table w-100 table-striped" id="table_project">
             <thead>
                 <tr>
                     <th>No</th>
@@ -86,7 +90,18 @@
                     <td>{{ $item->start_periode }}</td>
                     <td>{{ $item->end_periode }}</td>
                     <td>{{ $item->link }}</td>
-                    <td></td>
+                    <td class="d-flex flex-row flex-wrap align-items-center justfiy-content-center">
+                        <button type="button" class="btn btn-secondary btn-edit" data-id="{{ $item->id }}"
+                            data-title="{{ $item->title }}" data-start_periode="{{ $item->start_periode }}"
+                            data-end_periode="{{ $item->end_periode }}" data-link="{{ $item->link }}">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-danger ml-2" data-id="{{ $item->id }}">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </button>
+                    </td>
                 </tr>
                 @empty
                 <tr>
@@ -144,6 +159,45 @@
                     html : error
                 })
             }
+        })
+
+        $('#table_project button.btn-edit').on('click', function(){
+            const data = $(this).data();
+
+            //fill form
+            $('#form_project input[name=_method]').val("PUT");
+            $('#form_project input[name=id]').val(data.id);
+            $('#form_project input[name=title]').val(data.title);
+            $('#form_project input[name=start_periode]').val(data.start_periode);
+            $('#form_project input[name=end_periode]').val(data.end_periode);
+            $('#form_project textarea[name=summary]').val(data.summary);
+            $('#form_project input[name=link]').val(data.link);
+
+            //open form
+            $('#card_project').removeClass('collapsed-card');
+            $('#card_project .card-body').show();
+            $('#card_project .btn-tool>i').removeClass('fa-plus').addClass('fa-minus');
+
+            //show cancel button
+            $('#card_project .btn-cancel').removeClass('d-none');
+        })
+
+        $('#card_project .btn-cancel').on('click', function(){
+            $('#form_project input[name=id]').val("");
+            $('#form_project input[name=_methode]').val("POST");
+            $('#form_project input[name=id]').val("");
+            $('#form_project input[name=title]').val("");
+            $('#form_project input[name=start_periode]').val("");
+            $('#form_project input[name=end_periode]').val("");
+            $('#form_project textarea[name=summary]').val("");
+            $('#form_project input[name=link]').val("");
+
+            $('#card_project .btn-cancel').addClass('d-none');
+
+            //close form
+            $('#card_project').addClass('collapsed-card');
+            $('#card_project .card-body').hide();
+            $('#card_project .btn-tool>i').removeClass('fa-minus').addClass('fa-plus');
         })
     })
 </script>
