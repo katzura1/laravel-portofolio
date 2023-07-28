@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('id_project')->references('id')->on('projects');
             $table->text('image');
+            $table->boolean('is_default');
             $table->timestamps();
         });
     }
