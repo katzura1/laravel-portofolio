@@ -11,15 +11,26 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $projects = Project::paginate(10);
+
+        return view('admin.project', [
+            'projects' => $projects
+        ]);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'start_periode', 'end_periode', 'summary', 'link'],
+            'title' => ['required'],
             'start_periode' => ['required', 'date'],
-            'end_periode' => ['required', 'after_or_equal:start_periode'],
+            'end_periode' => ['required', 'date', 'after_or_equal:start_periode'],
             'summary' => ['required', 'string'],
             'link' => ['required', 'string'],
         ]);

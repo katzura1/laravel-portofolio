@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');
 
-    Route::group(['middleware' => 'auth:web'], function () {
+    Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/', function () {
             return view('admin.dashboard');
