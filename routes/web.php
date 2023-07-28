@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ProjectImageController;
+use App\Http\Controllers\Admin\ProjectStackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,8 +38,28 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');
 
     Route::group(['middleware' => 'auth:web'], function () {
+
         Route::get('/', function () {
             return view('dashboard');
         })->name('admin.dashboard');
+
+        Route::group(['prefix' => 'project'], function () {
+            Route::get('/', [ProjectController::class, 'index'])->name('admin.project.index');
+            Route::post('store', [ProjectController::class, 'store'])->name('admin.project.store');
+            Route::put('update', [ProjectController::class, 'update'])->name('admin.project.update');
+            Route::delete('destroy', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
+        });
+
+        Route::group(['prefix' => 'project_image'], function () {
+            Route::post('store', [ProjectImageController::class, 'store'])->name('admin.project_image.store');
+            Route::put('update', [ProjectImageController::class, 'update'])->name('admin.project_image.update');
+            Route::delete('destroy', [ProjectImageController::class, 'destroy'])->name('admin.project_image.destroy');
+        });
+
+        Route::group(['prefix' => 'project_stack'], function () {
+            Route::post('store', [ProjectStackController::class, 'store'])->name('admin.project_stack.store');
+            Route::put('update', [ProjectStackController::class, 'update'])->name('admin.project_stack.update');
+            Route::delete('destroy', [ProjectStackController::class, 'destroy'])->name('admin.project_stack.destroy');
+        });
     });
 });
