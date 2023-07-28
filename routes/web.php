@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth:web'], function () {
 
         Route::get('/', function () {
-            return view('dashboard');
+            return view('admin.dashboard');
         })->name('admin.dashboard');
 
         Route::group(['prefix' => 'project'], function () {
