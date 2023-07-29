@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ProjectImageController;
 use App\Http\Controllers\Admin\ProjectStackController;
+use App\Models\ProjectStack;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'admin'], function () {
         });
 
         Route::group(['prefix' => 'project_stack'], function () {
+            Route::get('/{id}', [ProjectStackController::class, 'index'])->name('admin.project_stack.index');
             Route::post('store', [ProjectStackController::class, 'store'])->name('admin.project_stack.store');
             Route::put('update', [ProjectStackController::class, 'update'])->name('admin.project_stack.update');
             Route::delete('destroy', [ProjectStackController::class, 'destroy'])->name('admin.project_stack.destroy');

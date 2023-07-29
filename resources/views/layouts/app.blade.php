@@ -16,7 +16,7 @@
 
 <body>
     <!-- Full-width fluid until the `md` breakpoint, then lock to container -->
-    <div class="container md:mx-auto">
+    <div class="md:container md:mx-auto">
         @include('components.navbar')
 
         @yield('content')

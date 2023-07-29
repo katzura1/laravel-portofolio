@@ -6,6 +6,17 @@
 
 @section('content')
 <div class="row">
+    <!-- Error Area -->
+    @if (session()->has('error'))
+    <div class="col-12">
+        <div class="alert alert-danger">
+            <p class="m-0">{{ session()->get('error') }}</p>
+        </div>
+    </div>
+    @endif
+    <!-- End Error Area -->
+
+    <!-- Form -->
     <div class="col-12">
         <div class="card collapsed-card" id="card_project">
             <div class="card-header">
@@ -70,6 +81,9 @@
             </div>
         </div>
     </div>
+    <!-- End Form -->
+
+    <!-- Table -->
     <div class="col-12 table-responsive">
         <table class="table w-100 table-striped" id="table_project">
             <thead>
@@ -79,6 +93,8 @@
                     <th>Start Periode</th>
                     <th>End Periode</th>
                     <th>Link</th>
+                    <th>Image</th>
+                    <th>Stack</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -89,15 +105,25 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->start_periode }}</td>
                     <td>{{ $item->end_periode }}</td>
-                    <td>{{ $item->link }}</td>
+                    <td>
+                        <a href="{{ $item->link }}" target="_blank">Link Project</a>
+                    </td>
+                    <td>
+                        <a href="{{ url('') }}" class="btn btn-sm btn-info text-white">Image</a>
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.project_stack.index', ['id' => $item->id]) }}"
+                            class="btn btn-sm btn-warning text-white">Stack</a>
+                    </td>
                     <td class="d-flex flex-row flex-wrap align-items-center justfiy-content-center">
-                        <button type="button" class="btn btn-secondary btn-edit" data-id="{{ $item->id }}"
+                        <button type="button" class="btn btn-sm btn-secondary btn-edit" data-id="{{ $item->id }}"
                             data-title="{{ $item->title }}" data-start_periode="{{ $item->start_periode }}"
-                            data-end_periode="{{ $item->end_periode }}" data-link="{{ $item->link }}">
+                            data-summary="{{ $item->summary }}" data-end_periode="{{ $item->end_periode }}"
+                            data-link="{{ $item->link }}">
                             <i class="fa fa-edit"></i>
                             Edit
                         </button>
-                        <button type="button" class="btn btn-danger ml-2" data-id="{{ $item->id }}">
+                        <button type="button" class="btn btn-sm btn-danger btn-delete ml-2" data-id="{{ $item->id }}">
                             <i class="fa fa-trash"></i>
                             Delete
                         </button>
@@ -112,6 +138,7 @@
         </table>
         {{ $projects->links() }}
     </div>
+    <!-- End Table -->
 </div>
 @endsection
 
@@ -198,6 +225,49 @@
             $('#card_project').addClass('collapsed-card');
             $('#card_project .card-body').hide();
             $('#card_project .btn-tool>i').removeClass('fa-minus').addClass('fa-plus');
+        })
+
+        $('#table_project button.btn-delete').on('click', function(){
+            const data = $(this).data();
+
+            try {
+                const post = () => {
+                    const method = "DELETE";
+                    const url = "{{ route('admin.project.destroy') }}"
+                    ajax_post({
+                        url: url,
+                        data: {
+                            id : data.id,
+                            _method : method,
+                        },
+                        success: function (result) {
+                            Swal.close();
+                            if (result.code == 200) {
+                            show_success({
+                                html: result.message ?? "Data delete succesfully.",
+                                didClose: () => {
+                                    location.reload();
+                                },
+                            });
+                            } else {
+                            show_error({
+                                html: result.message ?? "Data failed deleted..",
+                            });
+                            }
+                        },
+                    });
+                };
+
+                prompt_swal(post, {
+                    title : 'Delete Project',
+                    html: "do you want to delete this project ?",
+                    confirmButtonText: "Yes, delete it!",
+                });
+            } catch (error) {
+                show_error({
+                    html : error
+                })
+            }
         })
     })
 </script>

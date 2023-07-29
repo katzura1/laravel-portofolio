@@ -18,6 +18,7 @@ class ProjectController extends Controller
 
     public function index(Request $request)
     {
+        // dd(session()->all());
         $projects = Project::paginate(10);
 
         return view('admin.project', [
@@ -61,7 +62,7 @@ class ProjectController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => ['required', 'exists:projects,id'],
-            'title' => ['required', 'start_periode', 'end_periode', 'summary', 'link'],
+            'title' => ['required'],
             'start_periode' => ['required', 'date'],
             'end_periode' => ['required', 'after_or_equal:start_periode'],
             'summary' => ['required', 'string'],

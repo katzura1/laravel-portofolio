@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Stack extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['id', 'name'];
 }
