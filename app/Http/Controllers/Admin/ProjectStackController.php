@@ -23,7 +23,9 @@ class ProjectStackController extends Controller
         }
 
         $stacks = Stack::all(['id', 'name']);
-        $projectStacks = ProjectStack::with(['stack'])->paginate(10);
+        $projectStacks = ProjectStack::with(['stack'])
+            ->where('id_projegact', $id)
+            ->paginate(10);
         return view('admin.project-stack', [
             'stacks' => $stacks,
             'projectStacks' => $projectStacks,

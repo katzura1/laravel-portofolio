@@ -81,8 +81,8 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $item->stack->name }}</td>
                     <td class="d-flex flex-row flex-wrap align-items-center justfiy-content-center">
-                        <button type="button" class="btn btn-sm btn-secondary btn-edit" data-id="{{ $item->id }}" <i
-                            class="fa fa-edit"></i>
+                        <button type="button" class="btn btn-sm btn-secondary btn-edit" data-id="{{ $item->id }}"
+                            data-id_stack="{{ $item->id_stack }}" <i class="fa fa-edit"></i>
                             Edit
                         </button>
                         <button type="button" class="btn btn-sm btn-danger btn-delete ml-2" data-id="{{ $item->id }}">
@@ -155,11 +155,7 @@
             //fill form
             $('#form_project_stack input[name=_method]').val("PUT");
             $('#form_project_stack input[name=id]').val(data.id);
-            $('#form_project_stack input[name=title]').val(data.title);
-            $('#form_project_stack input[name=start_periode]').val(data.start_periode);
-            $('#form_project_stack input[name=end_periode]').val(data.end_periode);
-            $('#form_project_stack textarea[name=summary]').val(data.summary);
-            $('#form_project_stack input[name=link]').val(data.link);
+            $('#form_project_stack select[name=id_stack]').val(data.id_stack);
 
             //open form
             $('#card_project').removeClass('collapsed-card');
@@ -174,11 +170,7 @@
             $('#form_project_stack input[name=id]').val("");
             $('#form_project_stack input[name=_methode]').val("POST");
             $('#form_project_stack input[name=id]').val("");
-            $('#form_project_stack input[name=title]').val("");
-            $('#form_project_stack input[name=start_periode]').val("");
-            $('#form_project_stack input[name=end_periode]').val("");
-            $('#form_project_stack textarea[name=summary]').val("");
-            $('#form_project_stack input[name=link]').val("");
+            $('#form_project_stack select[name=id_stack]').val("");
 
             $('#card_project .btn-cancel').addClass('d-none');
 
