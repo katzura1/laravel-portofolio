@@ -19,7 +19,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         // dd(session()->all());
-        $projects = Project::paginate(10);
+        $projects = Project::orderBy('start_periode')->paginate(10);
 
         return view('admin.project', [
             'projects' => $projects

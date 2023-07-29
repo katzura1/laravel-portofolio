@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ProjectImageController;
 use App\Http\Controllers\Admin\ProjectStackController;
+use App\Http\Controllers\HomeController;
 use App\Models\ProjectStack;
 use Illuminate\Support\Facades\Route;
 
@@ -18,17 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/detail', function () {
-    return view('project-detail');
-});
-
-Route::get('/projects', function () {
-    return view('project-list');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/projects', [HomeController::class, 'projects'])->name('home.projects');
+Route::get('/projects/{id}', [HomeController::class, 'projectDetail'])->name('home.project.detail');
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -52,6 +45,7 @@ Route::group(['prefix' => 'admin'], function () {
         });
 
         Route::group(['prefix' => 'project_image'], function () {
+            Route::get('/{id}', [ProjectImageController::class, 'index'])->name('admin.project_image.index');
             Route::post('store', [ProjectImageController::class, 'store'])->name('admin.project_image.store');
             Route::put('update', [ProjectImageController::class, 'update'])->name('admin.project_image.update');
             Route::delete('destroy', [ProjectImageController::class, 'destroy'])->name('admin.project_image.destroy');

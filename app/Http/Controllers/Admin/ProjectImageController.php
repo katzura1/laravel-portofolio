@@ -4,13 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectImageController extends Controller
 {
+
+    public function index(Request $request, $id)
+    {
+        $project = Project::find($id);
+        // dd($project);
+        if (!$project) {
+            return back()->with('error', 'Project not found');
+        }
+
+        $projectImages = ProjectImage::where('id_project', $id)
+            ->paginate(10);
+        return view('admin.project-image', [
+            'projectImages' => $projectImages,
+            'project' => $project,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -29,6 +48,14 @@ class ProjectImageController extends Controller
         try {
             $validated = $validator->safe()->except('image');
             $validated['image'] = $this->saveImage($request->image, 'projects');
+
+            if ($request->is_default == '1') {
+                ProjectImage::where('id_project', $request->id_project)
+                    ->update([
+                        'is_default' => 0
+                    ]);
+            }
+
             $projectImage = new ProjectImage($validated);
             $projectImage->save();
             if ($projectImage) {
@@ -85,9 +112,9 @@ class ProjectImageController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => ['required', 'exists:project_stacks,id'],
+            'id' => ['required', 'exists:project_images,id'],
             'image' => ['sometimes', 'required', 'image', 'max:4096'],
-            'is_default' => ['required', 'boolean'],
+            'is_default' => ['required', 'in:1,0'],
         ]);
 
         if ($validator->fails()) {
@@ -99,6 +126,14 @@ class ProjectImageController extends Controller
 
         try {
             $validated = $validator->safe()->except(['id', 'image']);
+
+            if ($request->is_default == '1') {
+                ProjectImage::where('id_project', $request->id_project)
+                    ->update([
+                        'is_default' => 0
+                    ]);
+            }
+
             $projectImage = ProjectImage::find($request->id);
             $projectImage->update($validated);
             if ($projectImage) {
@@ -137,10 +172,19 @@ class ProjectImageController extends Controller
         try {
             $projectImage = ProjectImage::find($request->id);
             if ($projectImage) {
+                //change is_default
+
+                $otherImage = ProjectImage::where('id_project', $projectImage->id_project)
+                    ->where('id', '!=', $projectImage->id)
+                    ->first();
+                if ($otherImage) {
+                    $otherImage->update('is_default', 1);
+                }
+
                 //delete project image
                 $this->deleteImage($projectImage->image);
                 //delete stack
-                ProjectImage::where('id_project', $projectImage->id)->delete();
+                ProjectImage::where('id', $projectImage->id)->delete();
 
                 DB::commit();
                 return ResponseFormatter::success('Data berhasil dihapus.');

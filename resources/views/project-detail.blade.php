@@ -9,35 +9,27 @@
                     class="h-24 lg:h-full rounded-none lg:rounded-lg w-full object-cover" alt="Shoes" />
             </figure> --}}
             <div class="card-body px-4 py-4">
-                <h2 class="text-2xl text-primary-content">HR System (Back End)</h2>
-                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam optio
-                    consectetur nam perspiciatis sit incidunt magnam voluptates. Eveniet, recusandae vitae?
-                    Omnis saepe, sint sed et molestiae accusantium a voluptatem iste.</p>
+                <h2 class="text-2xl text-primary-content">{{ $project['title'] }}</h2>
+                <p class="text-sm">
+                    {{ $project['summary'] }}
+                </p>
 
-                <div class="flex flex-row  gap-2">
-                    <div class="w-2/5 overflow-hidden rounded-lg">
-                        <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg"
-                            class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
+                <div class="flex flex-row gap-2">
+                    @foreach ($project['image'] as $item)
+                    <div class="w-2/5 lg:h-[250px] overflow-hidden rounded-lg">
+                        <img src="{{ $item['image'] }}"
+                            class="w-full h-full object-cover rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
                     </div>
-                    <div class="w-2/5 overflow-hidden rounded-lg">
-                        <img src="https://daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg"
-                            class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    </div>
-                    <div class="w-2/5 overflow-hidden rounded-lg">
-                        <img src="https://daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg"
-                            class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    </div>
+                    @endforeach
                 </div>
 
                 <h4>Stack</h4>
                 <div class="flex flex-wrap flex-row gap-4">
-                    <div class="badge">default</div>
-                    <div class="badge badge-neutral">neutral</div>
-                    <div class="badge badge-secondary">secondary</div>
-                    <div class="badge badge-accent">accent</div>
-                    <div class="badge badge-ghost">ghost</div>
+                    @foreach ($project['stack'] as $item)
+                    <div class="badge badge-neutral">{{ $item['stack']['name'] }}</div>
+                    @endforeach
                 </div>
-                <button class="btn btn-sm btn-primary mt-4">
+                <a class="btn btn-sm btn-primary mt-4" href="{{ $project['link'] }}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -48,67 +40,26 @@
                         </g>
                     </svg>
                     Live / Demo
-                </button>
+                </a>
             </div>
         </div>
 
         <div class="divider"></div>
         <div class="lg:w-2/4 p-2">
-            <h2 class="text-2xl tooltip before:w-full before:content-[attr(data-tip)] lg:tooltip-right"
+            <h2 class="text-2xl text-primary-content tooltip before:w-full before:content-[attr(data-tip)] lg:tooltip-right"
                 data-tip="Use your navigation keyboard to slide">
-                Other
-                Project</h2>
+                Other Project
+            </h2>
             <div class="carousel carousel-center max-w-full mt-2 p-2 space-x-4 ">
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
+                @foreach ($projects as $item)
+                <div class="carousel-item w-2/5 lg:h-[65vh] overflow-hidden rounded-lg flex flex-col gap-2">
+                    <img src="{{ $item['image'] }}"
+                        class="w-full flex-1 object-cover rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
                     <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                        Long Test Test 123213 131 12 3123 2
+                        {{ $item['title'] }}
                     </h4>
                 </div>
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                    </h4>
-                </div>
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                    </h4>
-                </div>
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                    </h4>
-                </div>
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                    </h4>
-                </div>
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                    </h4>
-                </div>
-                <div class="carousel-item w-2/5 overflow-hidden rounded-lg flex flex-col gap-2 max-h-[40vh]">
-                    <img src="https://daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg"
-                        class="w-full rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                    <h4 class="text-xl font-bold shadow-xl z-50 px-2 text-primary-content truncate overflow-hidden">
-                        Title
-                    </h4>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
