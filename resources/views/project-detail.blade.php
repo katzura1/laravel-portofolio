@@ -2,6 +2,14 @@
 
 @section('title', $project['title'].'- Denny Portofolio')
 
+@section('breadcrumbs')
+<ul>
+    <li><a href="{{ url('') }}">Home</a></li>
+    <li><a href="{{ url('projects') }}">Projects</a></li>
+    <li>{{ $project['title'] }}</li>
+</ul>
+@endsection
+
 @section('content')
 <div class="md:h-min-[75vh] lg:h-min-[62vh]">
     <div class="flex flex-col gap-4 shadow-xl">

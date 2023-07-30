@@ -19,7 +19,7 @@
     <div class="md:container md:mx-auto">
         @include('components.navbar')
 
-        <div class="text-sm breadcrumbs">
+        <div class="text-sm breadcrumbs p-4">
             @yield('breadcrumbs', '')
         </div>
 
