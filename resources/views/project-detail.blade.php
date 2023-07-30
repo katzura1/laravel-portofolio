@@ -14,11 +14,7 @@
 <div class="md:h-min-[75vh] lg:h-min-[62vh]">
     <div class="flex flex-col gap-4 shadow-xl">
         <div class="card bg-base-100 rounded-none lg:rounded-lg">
-            {{-- <figure>
-                <img src="https://daisyui.comhttps://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                    class="h-24 lg:h-full rounded-none lg:rounded-lg w-full object-cover" alt="Shoes" />
-            </figure> --}}
-            <div class="card-body px-4 py-4 flex-col gap-4 justify-start">
+            <div class="card-body px-4 py-4 flex-col gap-4 justify-start fadeInUp-animation">
                 <h1 class="text-2xl text-primary-content">{{ $project['title'] }}</h1>
                 <div class="flex flex-col lg:flex-row gap-2 justify-between">
                     <div class="lg:w-1/2">
@@ -68,7 +64,7 @@
         </div>
 
         <div class="divider"></div>
-        <div class="p-2">
+        <div class="p-2 fadeInUp-animation">
             <h2 class="text-xl text-primary-content tooltip before:w-full before:content-[attr(data-tip)] lg:tooltip-right"
                 data-tip="Use your navigation keyboard to slide">
                 Other Project

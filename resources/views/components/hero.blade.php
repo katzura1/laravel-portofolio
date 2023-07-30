@@ -1,4 +1,4 @@
-<div class="hero min-h-fit bg-base-200 rounded-lg">
+<div class="hero min-h-fit bg-base-200 rounded-lg fadeInUp-animation">
     <div class="hero-content flex flex-col">
         <div class="flex flex-col lg:flex-row-reverse justify-center items-center sm:px-12">
             <div class="avatar w-1/4 flex justify-end items-end">

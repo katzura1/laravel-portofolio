@@ -29,6 +29,30 @@
     </div>
 
     <script src="{{ asset('vendor/viewerjs/viewer.min.js') }}"></script>
+    <script>
+        // Function to handle smooth scroll animation
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            if (element) {
+                element.scrollIntoView({
+                behavior: "smooth",
+                });
+            }
+        }
+
+        // Attach click event listeners to the links
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach((link) => {
+                link.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                const target = this.getAttribute("href");
+                smoothScroll(target);
+                });
+            });
+        });
+
+    </script>
     @yield('js')
 </body>
 

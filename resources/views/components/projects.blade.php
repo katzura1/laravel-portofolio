@@ -1,4 +1,4 @@
-<div class="flex flex-col p-4 gap-4">
+<div class="flex flex-col p-4 gap-4 fadeInUp-animation">
     <div class="flex flex-row justify-between item-start w-full">
         <h2 class="text-lg lg:text-2xl font-bold text-primary-content">Latest Project</h2>
     </div>

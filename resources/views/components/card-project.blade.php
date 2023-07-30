@@ -1,5 +1,5 @@
 <a class="w-full lg:w-[32%] sm:max-h-24 lg:max-h-none" href="{{ route('home.project.detail',['id'=>$item->id]) }}">
-    <div class="card h-full bg-base-300 shadow-xl image-full hover:cursor-pointer">
+    <div class="card h-full bg-base-300 shadow-xl image-full hover:cursor-pointer fadeInUp-animation">
         <figure>
             <img class="w-full" src="{{ $item->image }}" alt="{{ $item->title }}" />
         </figure>

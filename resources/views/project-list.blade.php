@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-<h1 class="text-lg lg:text-2xl font-bold text-primary-content p-4">My Complete Projects</h1>
+<h1 class="text-lg lg:text-2xl font-bold text-primary-content p-4 fadeInUp-animation">My Complete Projects</h1>
 <div id="project-list" class="p-4">
     <div class="flex flex-col lg:flex-row flex-wrap gap-2 justify-center">
         @foreach ($projects as $item)
