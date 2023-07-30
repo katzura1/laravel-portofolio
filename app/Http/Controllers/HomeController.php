@@ -54,7 +54,10 @@ class HomeController extends Controller
             $project['image'][$key]['image'] = url($value['image']);
         }
 
-        $projects = Project::orderBy('start_periode', 'DESC')
+        $order = ['title', 'start_periode', 'end_periode', 'summary'];
+        $ordering = ['ASC', 'DESC'];
+
+        $projects = Project::orderBy($order[array_rand($order)], $ordering[array_rand($ordering)])
             ->where('id', '!=', $project['id'])
             ->paginate(5);
 
