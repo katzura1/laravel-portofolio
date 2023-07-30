@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', 'Showcasing Web Development Skills: My Portfolio')</title>
+    <title>@yield('title', 'Full Stack Developer - Denny Portofolio')</title>
     <meta name="description"
-        content="Welcome to my web developer portfolio, showcasing my skills in Laravel and Flutter development. Witness my expertise in building dynamic, responsive websites, and engaging mobile applications, delivering innovative solutions and exceptional user experiences.">
-    <meta name="keywords"
-        content="Web Developer Portfolio, Laravel Development, Flutter Development, Innovative Solutions, Mobile App Development">
+        content="@yield('description','industry experience as a Full-Stack developer, proficient in constructing websites and web applications. My expertise lies in PHP programming language, particularly in Laravel. Additionally, I possess a solid background in working with CodeIgniter, Wordpress, and Flutter.')">
+    <meta name="keywords" content="Denny, Full-Stack Developer, Web Developer, Flutter Developer, Freelance Programmer">
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="{{ asset('vendor/viewerjs/viewer.min.css') }}">
 </head>
 
 <body>
@@ -19,10 +19,17 @@
     <div class="md:container md:mx-auto">
         @include('components.navbar')
 
+        <div class="text-sm breadcrumbs">
+            @yield('breadcrumbs', '')
+        </div>
+
         @yield('content')
 
         @include('components.footer')
     </div>
+
+    <script src="{{ asset('vendor/viewerjs/viewer.min.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

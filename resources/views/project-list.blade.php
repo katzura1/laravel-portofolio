@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'My Complete Projects - Denny Portofolio')
+
 @section('content')
 <h2 class="text-2xl font-bold text-primary-content p-4">Latest Project</h2>
 <div id="project-list" class="p-4">
