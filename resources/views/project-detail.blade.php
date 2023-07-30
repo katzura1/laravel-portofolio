@@ -71,8 +71,7 @@
                     <div class="overflow-hidden rounded-lg flex flex-col gap-2">
                         <img src="{{ $item['image'] }}"
                             class="w-full flex-1 object-cover rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                        <h4
-                            class="text-sm lg:text-lg font-bold shadow-xl z-50 px-2 text-white line-clamp-2 truncate overflow-hidden">
+                        <h4 class="text-xs lg:text-md font-bold shadow-xl z-50 px-2 text-white truncate">
                             {{ $item['title'] }}
                         </h4>
                     </div>

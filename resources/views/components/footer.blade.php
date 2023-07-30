@@ -1,7 +1,7 @@
-<footer id="footer" class="footer p-10 bg-base-200 rounded-lg flex flex-row lg:justify-between">
+<footer id="footer" class="footer p-8 bg-base-200 rounded-lg flex flex-row lg:justify-between">
     <div>
-        <h2 class="text-3xl text-primary-content">Get in Touch</h2>
-        <p class="mt-6 text-md">For business and partnership inquiry please contact me below!</p>
+        <h2 class="text-lg lg:text-2xl text-primary-content">Get in Touch</h2>
+        <p class="mt-4 text-sm lg:text-md">For business and partnership inquiry please contact me below!</p>
 
         <div class="flex flex-col mt-4 gap-4">
             @include('components.footer-item',[

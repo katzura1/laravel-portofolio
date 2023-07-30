@@ -1,5 +1,5 @@
-<div class="bg-base-100 rounded-lg">
-    <h2 class="text-3xl text-primary-content">Tools and Skills</h2>
+<div class="bg-base-100 rounded-lg p-4 ">
+    <h2 class="text-lg lg:text-2xl text-primary-content">Tools and Skills</h2>
     <div class="footer p-2 lg:p-4 flex flex-col lg:flex-row gap-4">
         <div class="flex-1 flex flex-col gap-2">
             <span class="text-md text-primary-content mb-2">Front-end (User Interface):</span>

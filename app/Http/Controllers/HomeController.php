@@ -68,4 +68,11 @@ class HomeController extends Controller
             'projects' => $projects,
         ]);
     }
+
+    public function projectSitemap(Request $request)
+    {
+        $projects = Project::orderBy('created_at', 'DESC')->get();
+        return response()->view('project-sitemap', ['projects' => $projects])
+            ->header('Content-Type', 'text/xml');
+    }
 }

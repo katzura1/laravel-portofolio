@@ -2,10 +2,10 @@
 <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between p-4">
     <div class="flex justify-between flex-1 sm:hidden">
         @if ($paginator->onFirstPage())
-        <span
+        {{-- <span
             class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white-500 bg-base-100 border border-base-200 cursor-default leading-5 rounded-md">
             {!! __('pagination.previous') !!}
-        </span>
+        </span> --}}
         @else
         <a href="{{ $paginator->previousPageUrl() }}"
             class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white-700 bg-base-100 border border-base-200 leading-5 rounded-md hover:text-white-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-white-700 transition ease-in-out duration-150">
@@ -19,10 +19,10 @@
             {!! __('pagination.next') !!}
         </a>
         @else
-        <span
+        {{-- <span
             class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white-500 bg-base-100 border border-base-200 cursor-default leading-5 rounded-md">
             {!! __('pagination.next') !!}
-        </span>
+        </span> --}}
         @endif
     </div>
 

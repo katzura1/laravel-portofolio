@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/projects', [HomeController::class, 'projects'])->name('home.projects');
 Route::get('/projects/{id}', [HomeController::class, 'projectDetail'])->name('home.project.detail');
+Route::get('/projects.xml', [HomeController::class, 'projectSitemap'])->name('home.project_sitemap');
 
 Route::group(['prefix' => 'admin'], function () {
 
