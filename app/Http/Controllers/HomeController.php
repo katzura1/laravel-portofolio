@@ -54,7 +54,9 @@ class HomeController extends Controller
             $project['image'][$key]['image'] = url($value['image']);
         }
 
-        $projects = Project::orderBy('start_periode', 'DESC')->paginate(5);
+        $projects = Project::orderBy('start_periode', 'DESC')
+            ->where('id', '!=', $project['id'])
+            ->paginate(5);
 
         $projects->getCollection()->transform(function ($item) {
             $projectImage = ProjectImage::where('id_project', $item->id)
