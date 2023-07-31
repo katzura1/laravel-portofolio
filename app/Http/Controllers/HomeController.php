@@ -10,7 +10,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $projects = Project::orderBy('start_periode', 'DESC')->paginate(3);
+        $projects = Project::select([
+            'id',
+            'title',
+            'start_periode',
+            'end_periode',
+            'summary',
+            'type',
+            'link',
+        ])
+            ->orderBy('start_periode', 'DESC')
+            ->paginate(3);
 
         $projects->getCollection()->transform(function ($item) {
             $projectImage = ProjectImage::where('id_project', $item->id)
@@ -26,7 +36,17 @@ class HomeController extends Controller
 
     public function projects(Request $request)
     {
-        $projects = Project::orderBy('start_periode', 'DESC')->paginate(6);
+        $projects = Project::select([
+            'id',
+            'title',
+            'start_periode',
+            'end_periode',
+            'summary',
+            'type',
+            'link',
+        ])
+            ->orderBy('start_periode', 'DESC')
+            ->paginate(6);
 
         $projects->getCollection()->transform(function ($item) {
             $projectImage = ProjectImage::where('id_project', $item->id)
@@ -57,7 +77,16 @@ class HomeController extends Controller
         $order = ['title', 'start_periode', 'end_periode', 'summary'];
         $ordering = ['ASC', 'DESC'];
 
-        $projects = Project::orderBy($order[array_rand($order)], $ordering[array_rand($ordering)])
+        $projects = Project::select([
+            'id',
+            'title',
+            'start_periode',
+            'end_periode',
+            'summary',
+            'type',
+            'link',
+        ])
+            ->orderBy($order[array_rand($order)], $ordering[array_rand($ordering)])
             ->where('id', '!=', $project['id'])
             ->paginate(5);
 

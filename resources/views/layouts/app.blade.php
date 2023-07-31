@@ -11,6 +11,7 @@
     <meta name="keywords" content="Denny, Full-Stack Developer, Web Developer, Flutter Developer, Freelance Programmer">
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
     <link rel="stylesheet" href="{{ asset('vendor/viewerjs/viewer.min.css') }}">
 </head>
 
@@ -19,7 +20,7 @@
     <div class="md:container md:mx-auto">
         @include('components.navbar')
 
-        <div class="text-sm breadcrumbs p-4">
+        <div class="text-sm breadcrumbs px-4 py-2">
             @yield('breadcrumbs', '')
         </div>
 

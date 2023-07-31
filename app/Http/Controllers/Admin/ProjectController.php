@@ -34,6 +34,7 @@ class ProjectController extends Controller
             'end_periode' => ['required', 'date', 'after_or_equal:start_periode'],
             'summary' => ['required', 'string'],
             'link' => ['required', 'string'],
+            'type' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {
@@ -67,6 +68,7 @@ class ProjectController extends Controller
             'end_periode' => ['required', 'after_or_equal:start_periode'],
             'summary' => ['required', 'string'],
             'link' => ['required', 'string'],
+            'type' => ['required', 'string'],
         ]);
 
         if ($validator->fails()) {

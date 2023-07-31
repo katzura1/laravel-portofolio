@@ -1,6 +1,6 @@
 <div
-    class="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-between rounded-lg bg-base-200 p-6 lg:p-14 mt-4 mb-4 fadeInUp-animation">
-    <div class="flex flex-col gap-2  text-center lg:text-start">
+    class="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center justify-between rounded-lg bg-base-200 px-2 py-4 lg:px-10 lg:py-10 my-2 lg:m-0 fadeInUp-animation">
+    <div class="flex flex-col gap-2 justify-center text-center lg:text-start">
         <h3 class="text-lg lg:text-2xl text-primary-content">Have any project in mind?</h3>
         <p class="text-sm">I’m available for freelancing</p>
     </div>

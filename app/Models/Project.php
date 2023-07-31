@@ -16,6 +16,7 @@ class Project extends Model
         'end_periode',
         'summary',
         'link',
+        'type'
     ];
 
     protected $casts = [

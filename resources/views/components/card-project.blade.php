@@ -4,7 +4,7 @@
             <img class="w-full" src="{{ $item->image }}" alt="{{ $item->title }}" />
         </figure>
         <div class="card-body rounded-lg flex flex-col justify-between p-6">
-            <h2 class="card-title text-md line-clamp-2 lg:text-lg text-primary-content">
+            <h2 class="card-title text-md line-clamp-2 lg:text-lg text-primary-content select-all">
                 {{ $item->title }}
             </h2>
             <div
@@ -12,7 +12,7 @@
                 <p class="badge badge-primary p-2">{{ date('M Y', strtotime($item->start_periode)).'-'.date('M
                     Y',
                     strtotime($item->end_periode)) }}</p>
-                <p class="badge p-2">Website</p>
+                <p class="badge p-2">{{ ucfirst(str_replace('_' , ' ' , $item->type)) }}</p>
             </div>
             <p class="text-xs text-start lg:text-justify flex-none md:hidden line-clamp-1 lg:line-clamp-3">
                 {{ $item->summary }}

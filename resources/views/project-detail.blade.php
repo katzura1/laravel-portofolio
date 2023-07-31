@@ -15,7 +15,10 @@
     <div class="flex flex-col gap-4 shadow-xl">
         <div class="card bg-base-100 rounded-none lg:rounded-lg">
             <div class="card-body px-4 py-4 flex-col gap-4 justify-start fadeInUp-animation">
-                <h1 class="text-2xl text-primary-content">{{ $project['title'] }}</h1>
+                <h1 class="text-2xl text-primary-content select-all items-center flex flex-row gap-4">
+                    {{ $project['title'] }}
+                    <span class="badge badge-primary p-3">{{ ucfirst(str_replace('_',' ',$project['type'])) }}</span>
+                </h1>
                 <div class="flex flex-col lg:flex-row gap-2 justify-between">
                     <div class="lg:w-1/2">
                         <p class="text-sm">
@@ -27,10 +30,13 @@
                         <h2 class="text-lg font-bold">Stack</h2>
                         <div class="flex flex-wrap flex-row gap-4 mt-2">
                             @foreach ($project['stack'] as $item)
-                            <div class="badge badge-neutral">{{ $item['stack']['name'] }}</div>
+                            <div class="badge badge-secondary gap-2 p-3">
+                                <i class="lni lni-{{ strtolower($item['stack']['name']) }}"></i>
+                                {{ $item['stack']['name'] }}
+                            </div>
                             @endforeach
                         </div>
-                        <a class="btn btn-sm btn-primary mt-4 w-full lg:w-fit" href="{{ $project['link'] }}">
+                        <a class="btn btn-sm btn-neutral mt-4 w-full lg:w-fit" href="{{ $project['link'] }}">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -46,7 +52,7 @@
                     </div>
                 </div>
 
-                <h2 class="text-xl text-start text-primary-content tooltip before:w-full before:content-[attr(data-tip)] lg:tooltip-right"
+                <h2 class="text-xl text-start text-primary-content tooltip"
                     data-tip="Use your navigation keyboard to slide">
                     Screenshots
                 </h2>
@@ -62,8 +68,12 @@
 
             </div>
         </div>
+    </div>
 
-        <div class="divider"></div>
+    <div class="divider"></div>
+    @include('components.other-project')
+    <div class="divider"></div>
+    <div>
         <div class="p-2 fadeInUp-animation">
             <h2 class="text-xl text-primary-content tooltip before:w-full before:content-[attr(data-tip)] lg:tooltip-right"
                 data-tip="Use your navigation keyboard to slide">
@@ -75,7 +85,7 @@
                     <div class="overflow-hidden rounded-lg flex flex-col gap-2">
                         <img src="{{ $item['image'] }}"
                             class="w-full flex-1 object-cover rounded-lg transition-all duration-500 ease-in-out transform bg-center bg-cover hover:scale-150" />
-                        <h4 class="text-xs lg:text-md font-bold shadow-xl z-50 px-2 text-white truncate">
+                        <h4 class="text-xs lg:text-md font-medium shadow-xl z-50 px-2 text-white truncate select-all">
                             {{ $item['title'] }}
                         </h4>
                     </div>
@@ -85,7 +95,6 @@
         </div>
     </div>
 </div>
-@include('components.other-project')
 @endsection
 
 @section('js')

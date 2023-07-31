@@ -67,6 +67,17 @@
                                 <input type="text" class="form-control form-control-sm" name="link" id="link" required>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="type">Type Project</label>
+                                <select name="type" id="type" class="form-control form-control-sm" required>
+                                    <option value="" selected disabled>Select Type</option>
+                                    <option value="mobile">Mobile</option>
+                                    <option value="website">Website</option>
+                                    <option value="mobile_and_website">Mobile & Website</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-12 text-right">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-save"></i> Save Project
@@ -93,6 +104,7 @@
                     <th>Start Periode</th>
                     <th>End Periode</th>
                     <th>Link</th>
+                    <th>Type</th>
                     <th>Image</th>
                     <th>Stack</th>
                     <th>Action</th>
@@ -105,6 +117,7 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->start_periode }}</td>
                     <td>{{ $item->end_periode }}</td>
+                    <td>{{ $item->type }}</td>
                     <td>
                         <a href="{{ $item->link }}" target="_blank">Link Project</a>
                     </td>
@@ -116,7 +129,7 @@
                         <a href="{{ route('admin.project_stack.index', ['id' => $item->id]) }}"
                             class="btn btn-sm btn-warning text-white">Stack</a>
                     </td>
-                    <td class="d-flex flex-row flex-wrap align-items-center justfiy-content-center">
+                    <td class="d-flex flex-lg-row flex-col align-items-center justfiy-content-center">
                         <button type="button" class="btn btn-sm btn-secondary btn-edit" data-id="{{ $item->id }}"
                             data-title="{{ $item->title }}" data-start_periode="{{ $item->start_periode }}"
                             data-summary="{{ $item->summary }}" data-end_periode="{{ $item->end_periode }}"
