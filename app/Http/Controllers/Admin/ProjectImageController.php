@@ -174,11 +174,15 @@ class ProjectImageController extends Controller
             if ($projectImage) {
                 //change is_default
 
-                $otherImage = ProjectImage::where('id_project', $projectImage->id_project)
-                    ->where('id', '!=', $projectImage->id)
-                    ->first();
-                if ($otherImage) {
-                    $otherImage->update('is_default', 1);
+                if ($projectImage->is_default == '1') {
+                    $otherImage = ProjectImage::where('id_project', $projectImage->id_project)
+                        ->where('id', '!=', $projectImage->id)
+                        ->first();
+                    if ($otherImage) {
+                        $otherImage->update([
+                            'is_default' => 1
+                        ]);
+                    }
                 }
 
                 //delete project image

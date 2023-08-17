@@ -17,7 +17,9 @@
             <div class="card-body px-4 py-4 flex-col gap-4 justify-start fadeInUp-animation">
                 <h1 class="text-2xl text-primary-content select-all items-center flex flex-row gap-4">
                     {{ $project['title'] }}
-                    <span class="badge badge-primary p-3">{{ ucfirst(str_replace('_',' ',$project['type'])) }}</span>
+                    <span class="badge badge-primary p-4 text-center truncate">{{ ucfirst(str_replace('_','
+                        ',$project['type']))
+                        }}</span>
                 </h1>
                 <div class="flex flex-col lg:flex-row gap-2 justify-between">
                     <div class="lg:w-1/2">
